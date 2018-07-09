@@ -2,3 +2,11 @@ body {
   background: black;
   color: white;
 }
+
+.card {
+  background: grey;
+  float: left;
+  margin: 1.66%;
+  padding-bottom: 20%;
+  width: 20%;
+}
