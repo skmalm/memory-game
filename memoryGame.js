@@ -3,7 +3,7 @@ const moveCounter = document.querySelector("#move-counter");
 const movePlural = document.querySelector("#move-plural");
 const stars = document.querySelector("#stars");
 let cardColors = [];
-const colorList = [
+let colorList = [
   "blue",
   "blue",
   "cyan",
