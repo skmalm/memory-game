@@ -24,22 +24,23 @@ let colorList = [
 let firstClick = true;
 let firstClickCard;
 let firstColor;
-let moveCount;
+let moveCount = 0;
 let secondColor;
 let solvedCount = 0;
 let usedIndex = [];
 
 init();
 
-resetButton.addEventListener("click", function() {
-  alert("clicked");
-});
-
 function init() {
-  moveCount = 0;
-  stars.textContent = "★★★";
+  addResetListener();
   genAllColors();
   setCardListeners();
+}
+
+function addResetListener() {
+  resetButton.addEventListener("click", function() {
+    location.reload();
+  });
 }
 
 function genAllColors() {
