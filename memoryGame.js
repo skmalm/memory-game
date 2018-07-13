@@ -1,8 +1,9 @@
 const cards = document.querySelectorAll(".card");
 const moveCounter = document.querySelector("#move-counter");
 const movePlural = document.querySelector("#move-plural");
+const stars = document.querySelector("#stars");
 let cardColors = [];
-let colorList = [
+const colorList = [
   "blue",
   "blue",
   "cyan",
@@ -31,6 +32,7 @@ init();
 
 function init() {
   moveCount = 0;
+  stars.textContent = "★★★";
   genAllColors();
 }
 
@@ -62,15 +64,9 @@ for (let i = 0; i < cards.length; i++) {
         firstClickCard = this;
         firstClick = false;
       } else {
+        updateMoveCount();
+        updateStarCount();
         secondColor = cardColors[i];
-        moveCount++;
-        moveCounter.textContent = moveCount;
-        if (moveCount === 1) {
-          movePlural.textContent = " Move";
-        }
-        if (moveCount === 2) {
-          movePlural.textContent = " Moves";
-        }
         if (firstColor === secondColor) {
           firstClickCard.classList.add("solved");
           this.classList.add("solved");
@@ -85,4 +81,24 @@ for (let i = 0; i < cards.length; i++) {
       }
     }
   });
+}
+
+function updateMoveCount() {
+  moveCount++;
+  moveCounter.textContent = moveCount;
+  if (moveCount === 1) {
+    movePlural.textContent = " Move";
+  }
+  if (moveCount === 2) {
+    movePlural.textContent = " Moves";
+  }
+}
+
+function updateStarCount() {
+  if (moveCount === 13) {
+    stars.textContent = "★★☆";
+  }
+  if (moveCount === 16) {
+    stars.textContent = "★☆☆"
+  }
 }
