@@ -3,6 +3,7 @@ const moveCounter = document.querySelector("#move-counter");
 const movePlural = document.querySelector("#move-plural");
 const resetButton = document.querySelector("#reset");
 const stars = document.querySelector("#stars");
+const timer = document.querySelector("#timer");
 let cardColors = [];
 let colorList = [
   "blue",
@@ -27,8 +28,7 @@ let firstColor;
 let moveCount = 0;
 let secondColor;
 let solvedCount = 0;
-let t0;
-let t1;
+let t = 0;
 let usedIndex = [];
 
 init();
@@ -37,7 +37,6 @@ function init() {
   addResetListener();
   genAllColors();
   setCardListeners();
-  t0 = performance.now();
 }
 
 function addResetListener() {
@@ -118,8 +117,14 @@ function updateStarCount() {
 function checkForWin() {
   solvedCount++;
   if (solvedCount == 8) {
-    t1 = performance.now();
     let time = ((t1 - t0) / 1000).toFixed(1);
     alert("You win! You used " + moveCount + " moves and it took you " + time + " seconds.");
   }
+}
+
+let intervalID = window.setInterval(timerDisplay, 1000);
+
+function timerDisplay() {
+  t++;
+  timer.textContent = "Time: " + t;
 }
