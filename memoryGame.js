@@ -22,19 +22,16 @@ let usedIndex = [];
 init();
 
 function init() {
-  applyRandomColors();
+  genAllColors();
 }
 
-function applyRandomColors() {
+function genAllColors() {
   while (usedIndex.length < colorList.length) {
-    genCardColors(colorList.length);
-  }
-  for (let i = 0; i < cards.length; i++) {
-    cards[i].style.backgroundColor = cardColors[i];
+    genCardColor(colorList.length);
   }
 }
 
-function genCardColors(cardQuantity) {
+function genCardColor(cardQuantity) {
   // generate random number 0 to (num-1)
   function randomNumber(num) {
     let result = Math.floor(Math.random() * num);
@@ -45,4 +42,8 @@ function genCardColors(cardQuantity) {
     cardColors.push(colorList[num]);
     usedIndex.push(num);
   }
+}
+
+function obscureToggle(element) {
+  element.classList.toggle("obscure");
 }
