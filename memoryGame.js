@@ -19,6 +19,12 @@ let colorList = [
   "teal"];
 let usedIndex = [];
 
+init();
+
+function init() {
+  applyRandomColors();
+}
+
 function applyRandomColors() {
   while (usedIndex.length < colorList.length) {
     genCardColors(colorList.length);
@@ -28,15 +34,12 @@ function applyRandomColors() {
   }
 }
 
-applyRandomColors();
-
-// generate random number 0 to (num-1)
-function randomNumber(num) {
-  let result = Math.floor(Math.random() * num);
-  return result;
-}
-
 function genCardColors(cardQuantity) {
+  // generate random number 0 to (num-1)
+  function randomNumber(num) {
+    let result = Math.floor(Math.random() * num);
+    return result;
+  }
   let num = randomNumber(cardQuantity);
   if (!usedIndex.includes(num)) {
     cardColors.push(colorList[num]);
