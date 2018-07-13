@@ -1,6 +1,7 @@
 body {
   background: black;
   color: white;
+  max-width: 700px;
 }
 
 .card {
