@@ -1,22 +1,22 @@
 const cards = document.querySelectorAll(".card");
 let cardColors = [];
 let colorList = [
-  "brown",
-  "brown",
-  "dimGray",
-  "dimGray",
+  "blue",
+  "blue",
+  "cyan",
+  "cyan",
   "green",
   "green",
-  "maroon",
-  "maroon",
-  "navy",
-  "navy",
-  "olive",
-  "olive",
-  "purple",
-  "purple",
-  "teal",
-  "teal"];
+  "lime",
+  "lime",
+  "magenta",
+  "magenta",
+  "orange",
+  "orange",
+  "red",
+  "red",
+  "yellow",
+  "yellow"];
 let usedIndex = [];
 
 init();
