@@ -23,6 +23,7 @@ init();
 
 function init() {
   genAllColors();
+  obscureAll();
 }
 
 function genAllColors() {
@@ -46,4 +47,21 @@ function genCardColor(cardQuantity) {
 
 function obscureToggle(element) {
   element.classList.toggle("obscure");
+}
+
+function obscureAll() {
+  for (let i = 0; i < cards.length; i++) {
+    cards[i].classList.add("obscure");
+  }
+}
+
+for (let i = 0; i < cards.length; i++) {
+  cards[i].addEventListener("click", function() {
+    if (this.classList.contains("obscure")) {
+      this.style.backgroundColor = cardColors[i];
+    } else {
+      this.style.backgroundColor = "";
+    }
+    obscureToggle(this);
+  });
 }
