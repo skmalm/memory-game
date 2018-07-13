@@ -1,6 +1,7 @@
 const cards = document.querySelectorAll(".card");
 const moveCounter = document.querySelector("#move-counter");
 const movePlural = document.querySelector("#move-plural");
+const resetButton = document.querySelector("#reset");
 const stars = document.querySelector("#stars");
 let cardColors = [];
 let colorList = [
@@ -29,6 +30,10 @@ let solvedCount = 0;
 let usedIndex = [];
 
 init();
+
+resetButton.addEventListener("click", function() {
+  alert("clicked");
+});
 
 function init() {
   moveCount = 0;
