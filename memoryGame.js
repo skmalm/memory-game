@@ -17,13 +17,17 @@ let colorList = [
   "red",
   "yellow",
   "yellow"];
+let firstClick = true;
+let firstClickCard;
+let firstColor;
+let secondColor;
+let solvedCount = 0;
 let usedIndex = [];
 
 init();
 
 function init() {
   genAllColors();
-  obscureAll();
 }
 
 function genAllColors() {
@@ -45,23 +49,28 @@ function genCardColor(cardQuantity) {
   }
 }
 
-function obscureToggle(element) {
-  element.classList.toggle("obscure");
-}
-
-function obscureAll() {
-  for (let i = 0; i < cards.length; i++) {
-    cards[i].classList.add("obscure");
-  }
-}
-
 for (let i = 0; i < cards.length; i++) {
   cards[i].addEventListener("click", function() {
-    if (this.classList.contains("obscure")) {
+    if (!this.classList.contains("solved")) {
       this.style.backgroundColor = cardColors[i];
-    } else {
-      this.style.backgroundColor = "";
+      if (firstClick) {
+        firstColor = cardColors[i];
+        firstClickCard = this;
+        firstClick = false;
+      } else {
+        secondColor = cardColors[i];
+        if (firstColor === secondColor) {
+          firstClickCard.classList.add("solved");
+          this.classList.add("solved");
+          solvedCount++;
+        } else {
+          setTimeout(function() {
+            firstClickCard.style.backgroundColor = "DimGray";
+            cards[i].style.backgroundColor = "DimGray";
+          }, 1000);
+        }
+        firstClick = true;
+      }
     }
-    obscureToggle(this);
   });
 }
