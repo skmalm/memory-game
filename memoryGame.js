@@ -1,4 +1,6 @@
 const cards = document.querySelectorAll(".card");
+const moveCounter = document.querySelector("#move-counter");
+const movePlural = document.querySelector("#move-plural");
 let cardColors = [];
 let colorList = [
   "blue",
@@ -20,6 +22,7 @@ let colorList = [
 let firstClick = true;
 let firstClickCard;
 let firstColor;
+let moveCount;
 let secondColor;
 let solvedCount = 0;
 let usedIndex = [];
@@ -27,6 +30,7 @@ let usedIndex = [];
 init();
 
 function init() {
+  moveCount = 0;
   genAllColors();
 }
 
@@ -59,6 +63,14 @@ for (let i = 0; i < cards.length; i++) {
         firstClick = false;
       } else {
         secondColor = cardColors[i];
+        moveCount++;
+        moveCounter.textContent = moveCount;
+        if (moveCount === 1) {
+          movePlural.textContent = " Move";
+        }
+        if (moveCount === 2) {
+          movePlural.textContent = " Moves";
+        }
         if (firstColor === secondColor) {
           firstClickCard.classList.add("solved");
           this.classList.add("solved");
