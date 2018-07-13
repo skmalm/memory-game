@@ -78,7 +78,7 @@ function setCardListeners() {
           if (firstColor === secondColor) {
             firstClickCard.classList.add("solved");
             this.classList.add("solved");
-            solvedCount++;
+            checkForWin();
           } else {
             setTimeout(function() {
               firstClickCard.style.backgroundColor = "DimGray";
@@ -109,5 +109,12 @@ function updateStarCount() {
   }
   if (moveCount === 16) {
     stars.textContent = "★☆☆"
+  }
+}
+
+function checkForWin() {
+  solvedCount++;
+  if (solvedCount == 8) {
+    alert("You win!");
   }
 }
