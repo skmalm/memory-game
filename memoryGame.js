@@ -27,6 +27,8 @@ let firstColor;
 let moveCount = 0;
 let secondColor;
 let solvedCount = 0;
+let t0;
+let t1;
 let usedIndex = [];
 
 init();
@@ -35,6 +37,7 @@ function init() {
   addResetListener();
   genAllColors();
   setCardListeners();
+  t0 = performance.now();
 }
 
 function addResetListener() {
@@ -115,6 +118,8 @@ function updateStarCount() {
 function checkForWin() {
   solvedCount++;
   if (solvedCount == 8) {
-    alert("You win!");
+    t1 = performance.now();
+    let time = ((t1 - t0) / 1000).toFixed(1);
+    alert("You win! You used " + moveCount + " moves and it took you " + time + " seconds.");
   }
 }
