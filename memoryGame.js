@@ -39,6 +39,7 @@ function init() {
   moveCount = 0;
   stars.textContent = "★★★";
   genAllColors();
+  setCardListeners();
 }
 
 function genAllColors() {
@@ -60,32 +61,34 @@ function genCardColor(cardQuantity) {
   }
 }
 
-for (let i = 0; i < cards.length; i++) {
-  cards[i].addEventListener("click", function() {
-    if (!this.classList.contains("solved")) {
-      this.style.backgroundColor = cardColors[i];
-      if (firstClick) {
-        firstColor = cardColors[i];
-        firstClickCard = this;
-        firstClick = false;
-      } else {
-        updateMoveCount();
-        updateStarCount();
-        secondColor = cardColors[i];
-        if (firstColor === secondColor) {
-          firstClickCard.classList.add("solved");
-          this.classList.add("solved");
-          solvedCount++;
+function setCardListeners() {
+  for (let i = 0; i < cards.length; i++) {
+    cards[i].addEventListener("click", function() {
+      if (!this.classList.contains("solved")) {
+        this.style.backgroundColor = cardColors[i];
+        if (firstClick) {
+          firstColor = cardColors[i];
+          firstClickCard = this;
+          firstClick = false;
         } else {
-          setTimeout(function() {
-            firstClickCard.style.backgroundColor = "DimGray";
-            cards[i].style.backgroundColor = "DimGray";
-          }, 1000);
+          updateMoveCount();
+          updateStarCount();
+          secondColor = cardColors[i];
+          if (firstColor === secondColor) {
+            firstClickCard.classList.add("solved");
+            this.classList.add("solved");
+            solvedCount++;
+          } else {
+            setTimeout(function() {
+              firstClickCard.style.backgroundColor = "DimGray";
+              cards[i].style.backgroundColor = "DimGray";
+            }, 1000);
+          }
+          firstClick = true;
         }
-        firstClick = true;
       }
-    }
-  });
+    });
+  }
 }
 
 function updateMoveCount() {
