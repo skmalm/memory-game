@@ -87,6 +87,7 @@ function checkForSolved(firstColor, secondColor, card1, card2) {
 function checkForWin() {
   solvedCount++;
   if (solvedCount === 8) {
+    timerOn = false;
     setTimeout(function() {
       modal.style.display = "block";
       if (stars.textContent === "★★★") {
@@ -99,7 +100,6 @@ function checkForWin() {
       }
     }, 600);
   }
-  timerOn = false;
 }
 
 function firstClickActions(index, thisCard) {
