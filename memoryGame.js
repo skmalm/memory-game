@@ -107,19 +107,25 @@ function updateMoveCount() {
 }
 
 function updateStarCount() {
-  if (moveCount === 13) {
+  if (moveCount === 14) {
     stars.textContent = "★★☆";
   }
-  if (moveCount === 16) {
+  if (moveCount === 17) {
     stars.textContent = "★☆☆"
   }
 }
 
 function checkForWin() {
   solvedCount++;
-  if (solvedCount == 8) {
+  if (solvedCount === 8) {
     setTimeout(function() {
-      alert("You win! You used " + moveCount + " moves and it took you " + t + " seconds.");
+      if (stars.textContent === "★★★") {
+        alert("Three stars, amazing! It took you " + t + " seconds this time.");
+      } else if (stars.textContent === "★★☆") {
+        alert("Two stars, not bad. It took you " + t + " seconds this time.");
+      } else {
+        alert("Only one star? I'm sure you can do better! It took you " + t + " seconds this time.");
+      }
     }, 600);
   }
   timerOn = false;
