@@ -12,6 +12,7 @@ button {
 
 .card {
   background: DimGray;
+  border-radius: 20px;
   float: left;
   margin: 1.66%;
   padding-bottom: 20%;
@@ -34,7 +35,8 @@ h1 {
 }
 
 .solved {
-  outline: thick double white;
+  box-shadow: 5px 5px 25px 3px gold,
+  -5px -5px 25px 3px gold;
 }
 
 #stripe {
