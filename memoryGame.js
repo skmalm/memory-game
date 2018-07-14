@@ -29,6 +29,7 @@ let moveCount = 0;
 let secondColor;
 let solvedCount = 0;
 let t = 0;
+let timerOn = true;
 let usedIndex = [];
 
 init();
@@ -116,15 +117,17 @@ function updateStarCount() {
 
 function checkForWin() {
   solvedCount++;
-  if (solvedCount == 8) {
-    let time = ((t1 - t0) / 1000).toFixed(1);
-    alert("You win! You used " + moveCount + " moves and it took you " + time + " seconds.");
+  if (solvedCount == 1) {
+    alert("You win! You used " + moveCount + " moves and it took you " + t + " seconds.");
   }
+  timerOn = false;
 }
 
 let intervalID = window.setInterval(timerDisplay, 1000);
 
 function timerDisplay() {
-  t++;
   timer.textContent = "Time: " + t;
+  if (timerOn) {
+    t++;
+  }
 }
