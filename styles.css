@@ -1,5 +1,5 @@
 body {
-  background: black;
+  background: #002940;
   color: white;
   font-family: 'Avant Garde', sans-serif;
   font-weight: lighter;
@@ -38,13 +38,17 @@ h1 {
 #moves-and-stars {
   display: inline-block;
   letter-spacing: 2px;
-  padding-right: 20px;
+  padding-right: 50px;
   width: 20%
 }
 
 .solved {
   box-shadow: 5px 5px 25px 3px gold,
   -5px -5px 25px 3px gold;
+}
+
+#stars {
+  color: Gold;
 }
 
 #stripe {
