@@ -75,20 +75,22 @@ function setCardListeners() {
           firstClickCard = this;
           firstClick = false;
         } else {
-          updateMoveCount();
-          updateStarCount();
-          secondColor = cardColors[i];
-          if (firstColor === secondColor) {
-            firstClickCard.classList.add("solved");
-            this.classList.add("solved");
-            checkForWin();
-          } else {
-            setTimeout(function() {
-              firstClickCard.style.backgroundColor = "DimGray";
-              cards[i].style.backgroundColor = "DimGray";
-            }, 300);
+          if (this !== firstClickCard) {
+            updateMoveCount();
+            updateStarCount();
+            secondColor = cardColors[i];
+            if (firstColor === secondColor) {
+              firstClickCard.classList.add("solved");
+              this.classList.add("solved");
+              checkForWin();
+            } else {
+              setTimeout(function() {
+                firstClickCard.style.backgroundColor = "DimGray";
+                cards[i].style.backgroundColor = "DimGray";
+              }, 300);
+            }
+            firstClick = true;
           }
-          firstClick = true;
         }
       }
     });
