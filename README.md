@@ -17,6 +17,8 @@ only one star. Try to get three stars in as short of a time as possible!
 * styles.css
 * memoryGame.js
 
+No further dependencies beyond these three files.
+
 ## Authors
 
 Sebastian Malm
