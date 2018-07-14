@@ -75,8 +75,10 @@ function checkForSolved(firstColor, secondColor, card1, card2) {
     card2.classList.add("solved");
     checkForWin();
   } else {
+    // 300 ms delay so color/symbol is visible
     setTimeout(function() {
       card1.style.backgroundColor = "DimGray";
+      // remove symbol from card
       card1.firstChild.textContent = "";
       card2.style.backgroundColor = "DimGray";
       card2.firstChild.textContent = "";
@@ -88,6 +90,7 @@ function checkForWin() {
   solvedCount++;
   if (solvedCount === 8) {
     timerOn = false;
+    // 600 ms delay before modal appears
     setTimeout(function() {
       modal.style.display = "block";
       if (stars.textContent === "★★★") {
@@ -115,12 +118,13 @@ function genAllColorsSymbols() {
 }
 
 function genCardColorSymbol(cardQuantity) {
-  // generate random number 0 to (num-1)
+  // function to generate random number 0 to (num-1)
   function randomNumber(num) {
     let result = Math.floor(Math.random() * num);
     return result;
   }
   let num = randomNumber(cardQuantity);
+  // if random color/symbol not added before, add that color/symbol
   if (!usedIndex.includes(num)) {
     cardColors.push(colorList[num]);
     cardSymbols.push(symbolList[num]);
@@ -141,6 +145,7 @@ function secondClickActions(index, thisCard) {
 function setCardListeners() {
   for (let i = 0; i < cards.length; i++) {
     cards[i].addEventListener("click", function() {
+      // do nothing if card already solved
       if (!this.classList.contains("solved")) {
         this.style.backgroundColor = cardColors[i];
         symbols[i].textContent = cardSymbols[i];
