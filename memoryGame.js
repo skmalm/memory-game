@@ -27,22 +27,22 @@ const colorList = [
   "yellow",
   "yellow"];
 const symbolList = [
-  "!",
-  "!",
-  "@",
-  "@",
-  "#",
-  "#",
-  "$",
-  "$",
-  "%",
-  "%",
-  "&",
-  "&",
-  "*",
-  "*",
-  "?",
-  "?"]
+  "Δ",
+  "Δ",
+  "Γ",
+  "Γ",
+  "Θ",
+  "Θ",
+  "Π",
+  "Π",
+  "Σ",
+  "Σ",
+  "Φ",
+  "Φ",
+  "Ψ",
+  "Ψ",
+  "Ω",
+  "Ω"]
 const intervalID = window.setInterval(timerDisplay, 1000);
 const usedIndex = [];
 let firstClick = true;
