@@ -4,8 +4,8 @@ const movePlural = document.querySelector("#move-plural");
 const resetButton = document.querySelector("#reset");
 const stars = document.querySelector("#stars");
 const timer = document.querySelector("#timer");
-let cardColors = [];
-let colorList = [
+const cardColors = [];
+const colorList = [
   "blue",
   "blue",
   "cyan",
@@ -22,6 +22,8 @@ let colorList = [
   "red",
   "yellow",
   "yellow"];
+const intervalID = window.setInterval(timerDisplay, 1000);
+const usedIndex = [];
 let firstClick = true;
 let firstClickCard;
 let firstColor;
@@ -30,7 +32,6 @@ let secondColor;
 let solvedCount = 0;
 let t = 0;
 let timerOn = true;
-let usedIndex = [];
 
 init();
 
@@ -44,6 +45,22 @@ function addResetListener() {
   resetButton.addEventListener("click", function() {
     location.reload();
   });
+}
+
+function checkForWin() {
+  solvedCount++;
+  if (solvedCount === 8) {
+    setTimeout(function() {
+      if (stars.textContent === "★★★") {
+        alert("Three stars, amazing! It took you " + t + " seconds this time.");
+      } else if (stars.textContent === "★★☆") {
+        alert("Two stars, not bad. It took you " + t + " seconds this time.");
+      } else {
+        alert("Only one star? I'm sure you can do better! It took you " + t + " seconds this time.");
+      }
+    }, 600);
+  }
+  timerOn = false;
 }
 
 function genAllColors() {
@@ -97,6 +114,13 @@ function setCardListeners() {
   }
 }
 
+function timerDisplay() {
+  timer.textContent = "Time: " + t;
+  if (timerOn) {
+    t++;
+  }
+}
+
 function updateMoveCount() {
   moveCount++;
   moveCounter.textContent = moveCount;
@@ -114,30 +138,5 @@ function updateStarCount() {
   }
   if (moveCount === 17) {
     stars.textContent = "★☆☆"
-  }
-}
-
-function checkForWin() {
-  solvedCount++;
-  if (solvedCount === 8) {
-    setTimeout(function() {
-      if (stars.textContent === "★★★") {
-        alert("Three stars, amazing! It took you " + t + " seconds this time.");
-      } else if (stars.textContent === "★★☆") {
-        alert("Two stars, not bad. It took you " + t + " seconds this time.");
-      } else {
-        alert("Only one star? I'm sure you can do better! It took you " + t + " seconds this time.");
-      }
-    }, 600);
-  }
-  timerOn = false;
-}
-
-let intervalID = window.setInterval(timerDisplay, 1000);
-
-function timerDisplay() {
-  timer.textContent = "Time: " + t;
-  if (timerOn) {
-    t++;
   }
 }
