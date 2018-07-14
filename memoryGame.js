@@ -77,7 +77,9 @@ function checkForSolved(firstColor, secondColor, card1, card2) {
   } else {
     setTimeout(function() {
       card1.style.backgroundColor = "DimGray";
+      card1.firstChild.textContent = "";
       card2.style.backgroundColor = "DimGray";
+      card2.firstChild.textContent = "";
     }, 300);
   }
 }
