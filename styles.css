@@ -30,6 +30,26 @@ h1 {
   text-transform: lowercase;
 }
 
+#modal-container {
+  position: relative;
+}
+
+#modal {
+  background: black;
+  border-radius: 15px;
+  display: block;
+  position: absolute;
+  margin: 9%;
+  text-align: center;
+  width: 80%;
+}
+
+#modal-text {
+  display: block;
+  letter-spacing: 2px;
+  margin: 20px;
+}
+
 #moves-and-stars {
   display: inline-block;
   letter-spacing: 2px;

@@ -1,4 +1,5 @@
 const cards = document.querySelectorAll(".card");
+const modal = document.querySelector("#modal");
 const moveCounter = document.querySelector("#move-counter");
 const movePlural = document.querySelector("#move-plural");
 const resetButton = document.querySelector("#reset");
@@ -70,7 +71,8 @@ function checkForWin() {
       } else if (stars.textContent === "★★☆") {
         alert("Two stars, not bad. It took you " + t + " seconds this time.");
       } else {
-        alert("Only one star? I'm sure you can do better! It took you " + t + " seconds this time.");
+        alert("Only one star? I'm sure you can do better! It took you " + t +
+        " seconds this time.");
       }
     }, 600);
   }
