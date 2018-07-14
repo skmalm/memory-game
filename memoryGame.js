@@ -47,6 +47,19 @@ function addResetListener() {
   });
 }
 
+function checkForSolved(firstColor, secondColor, card1, card2) {
+  if (firstColor === secondColor) {
+    card1.classList.add("solved");
+    card2.classList.add("solved");
+    checkForWin();
+  } else {
+    setTimeout(function() {
+      card1.style.backgroundColor = "DimGray";
+      card2.style.backgroundColor = "DimGray";
+    }, 300);
+  }
+}
+
 function checkForWin() {
   solvedCount++;
   if (solvedCount === 8) {
@@ -61,6 +74,12 @@ function checkForWin() {
     }, 600);
   }
   timerOn = false;
+}
+
+function firstClickActions(index, thisCard) {
+  firstColor = cardColors[index];
+  firstClickCard = thisCard;
+  firstClick = false;
 }
 
 function genAllColors() {
@@ -82,32 +101,25 @@ function genCardColor(cardQuantity) {
   }
 }
 
+function secondClickActions(index, thisCard) {
+  if (thisCard !== firstClickCard) {
+    updateMoveCount();
+    updateStarCount();
+    secondColor = cardColors[index];
+    checkForSolved(firstColor, secondColor, firstClickCard, thisCard);
+    firstClick = true;
+  }
+}
+
 function setCardListeners() {
   for (let i = 0; i < cards.length; i++) {
     cards[i].addEventListener("click", function() {
       if (!this.classList.contains("solved")) {
         this.style.backgroundColor = cardColors[i];
         if (firstClick) {
-          firstColor = cardColors[i];
-          firstClickCard = this;
-          firstClick = false;
+          firstClickActions(i, this);
         } else {
-          if (this !== firstClickCard) {
-            updateMoveCount();
-            updateStarCount();
-            secondColor = cardColors[i];
-            if (firstColor === secondColor) {
-              firstClickCard.classList.add("solved");
-              this.classList.add("solved");
-              checkForWin();
-            } else {
-              setTimeout(function() {
-                firstClickCard.style.backgroundColor = "DimGray";
-                cards[i].style.backgroundColor = "DimGray";
-              }, 300);
-            }
-            firstClick = true;
-          }
+          secondClickActions(i, this);
         }
       }
     });
