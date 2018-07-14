@@ -4,9 +4,11 @@ const moveCounter = document.querySelector("#move-counter");
 const movePlural = document.querySelector("#move-plural");
 const resetButton = document.querySelector("#reset");
 const stars = document.querySelector("#stars");
+const symbols = document.querySelectorAll(".symbol");
 const timer = document.querySelector("#timer");
 const winText = document.querySelector("#win-text");
 const cardColors = [];
+const cardSymbols = [];
 const colorList = [
   "blue",
   "blue",
@@ -24,6 +26,23 @@ const colorList = [
   "red",
   "yellow",
   "yellow"];
+const symbolList = [
+  "!",
+  "!",
+  "@",
+  "@",
+  "#",
+  "#",
+  "$",
+  "$",
+  "%",
+  "%",
+  "&",
+  "&",
+  "*",
+  "*",
+  "?",
+  "?"]
 const intervalID = window.setInterval(timerDisplay, 1000);
 const usedIndex = [];
 let firstClick = true;
@@ -65,7 +84,7 @@ function checkForSolved(firstColor, secondColor, card1, card2) {
 
 function checkForWin() {
   solvedCount++;
-  if (solvedCount === 1) {
+  if (solvedCount === 8) {
     setTimeout(function() {
       modal.style.display = "block";
       if (stars.textContent === "★★★") {
@@ -102,6 +121,7 @@ function genCardColor(cardQuantity) {
   let num = randomNumber(cardQuantity);
   if (!usedIndex.includes(num)) {
     cardColors.push(colorList[num]);
+    cardSymbols.push(symbolList[num]);
     usedIndex.push(num);
   }
 }
@@ -121,6 +141,7 @@ function setCardListeners() {
     cards[i].addEventListener("click", function() {
       if (!this.classList.contains("solved")) {
         this.style.backgroundColor = cardColors[i];
+        symbols[i].textContent = cardSymbols[i];
         if (firstClick) {
           firstClickActions(i, this);
         } else {

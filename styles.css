@@ -17,6 +17,7 @@ button {
   float: left;
   margin: 1.66%;
   padding-bottom: 21%;
+  position: relative;
   transition: all 0.6s;
   width: 21%;
 }
@@ -68,6 +69,14 @@ h1 {
 #stripe {
   padding: 20px 0px;
   text-align: center;
+}
+
+.symbol {
+  color: black;
+  font-size: 3em;
+  position: absolute;
+  top: 31%;
+  left: 36%;
 }
 
 #timer {
