@@ -32,6 +32,7 @@ let secondColor;
 let solvedCount = 0;
 let t = 0;
 let timerOn = true;
+let zeroSecond = true;
 
 init();
 
@@ -127,6 +128,11 @@ function setCardListeners() {
 }
 
 function timerDisplay() {
+  // forces t to be incremented once before display is updated
+  if (zeroSecond) {
+    t++;
+    zeroSecond = false;
+  }
   timer.textContent = "Time: " + t;
   if (timerOn) {
     t++;
