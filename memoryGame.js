@@ -59,7 +59,7 @@ init();
 
 function init() {
   addResetListener();
-  genAllColors();
+  genAllColorsSymbols();
   setCardListeners();
 }
 
@@ -108,13 +108,13 @@ function firstClickActions(index, thisCard) {
   firstClick = false;
 }
 
-function genAllColors() {
+function genAllColorsSymbols() {
   while (usedIndex.length < colorList.length) {
-    genCardColor(colorList.length);
+    genCardColorSymbol(colorList.length);
   }
 }
 
-function genCardColor(cardQuantity) {
+function genCardColorSymbol(cardQuantity) {
   // generate random number 0 to (num-1)
   function randomNumber(num) {
     let result = Math.floor(Math.random() * num);
