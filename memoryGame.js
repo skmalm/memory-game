@@ -5,6 +5,7 @@ const movePlural = document.querySelector("#move-plural");
 const resetButton = document.querySelector("#reset");
 const stars = document.querySelector("#stars");
 const timer = document.querySelector("#timer");
+const winText = document.querySelector("#win-text");
 const cardColors = [];
 const colorList = [
   "blue",
@@ -64,15 +65,16 @@ function checkForSolved(firstColor, secondColor, card1, card2) {
 
 function checkForWin() {
   solvedCount++;
-  if (solvedCount === 8) {
+  if (solvedCount === 1) {
     setTimeout(function() {
+      modal.style.display = "block";
       if (stars.textContent === "★★★") {
-        alert("Three stars, amazing! It took you " + t + " seconds this time.");
+        winText.textContent = "Three stars, amazing! It took you " + t + " seconds this time.";
       } else if (stars.textContent === "★★☆") {
-        alert("Two stars, not bad. It took you " + t + " seconds this time.");
+        winText.textContent = "Two stars, not bad. It took you " + t + " seconds this time.";
       } else {
-        alert("Only one star? I'm sure you can do better! It took you " + t +
-        " seconds this time.");
+        winText.textContent = "Only one star? I'm sure you can do better! It took you " + t +
+        " seconds this time.";
       }
     }, 600);
   }

@@ -35,16 +35,16 @@ h1 {
 }
 
 #modal {
-  background: black;
+  background: rgba(0, 0, 0, 0.7);
   border-radius: 15px;
-  display: block;
+  display: none;
   position: absolute;
   margin: 9%;
   text-align: center;
   width: 80%;
 }
 
-#modal-text {
+.modal-text {
   display: block;
   letter-spacing: 2px;
   margin: 20px;
