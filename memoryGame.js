@@ -86,7 +86,7 @@ function setCardListeners() {
             setTimeout(function() {
               firstClickCard.style.backgroundColor = "DimGray";
               cards[i].style.backgroundColor = "DimGray";
-            }, 1000);
+            }, 300);
           }
           firstClick = true;
         }
@@ -117,8 +117,10 @@ function updateStarCount() {
 
 function checkForWin() {
   solvedCount++;
-  if (solvedCount == 1) {
-    alert("You win! You used " + moveCount + " moves and it took you " + t + " seconds.");
+  if (solvedCount == 8) {
+    setTimeout(function() {
+      alert("You win! You used " + moveCount + " moves and it took you " + t + " seconds.");
+    }, 600);
   }
   timerOn = false;
 }
